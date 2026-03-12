@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
-import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -15,11 +14,25 @@ const navLinks = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
+  const scrollTo = (href: string) => {
+    try {
+      const selector = href.startsWith("#") ? href : `#${href}`;
+      const el = document.querySelector(selector) as HTMLElement | null;
+      if (!el) return;
+      const nav = document.querySelector('nav');
+      const offset = nav ? (nav as HTMLElement).offsetHeight : 0;
+      const top = el.getBoundingClientRect().top + window.pageYOffset - offset - 8;
+      window.scrollTo({ top, behavior: 'smooth' });
+    } catch (err) {
+      // fallback: navigate normally
+      window.location.hash = href;
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-xl border-b border-border">
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
-        <a href="#home" className="flex items-center gap-2">
-          <img src={logo} alt="Srimanasa Tours" className="h-10 w-10 object-contain" />
+        <a href="#home" className="flex items-center">
           <div className="leading-tight">
             <span className="text-lg font-bold font-[var(--font-display)] text-primary">Srimanasa</span>
             <span className="block text-[10px] tracking-[0.2em] uppercase text-muted-foreground">Tours & Travels</span>
@@ -31,6 +44,10 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo(link.href);
+              }}
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
             >
               {link.label}
@@ -67,7 +84,11 @@ const Navbar = () => {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollTo(link.href);
+                    setOpen(false);
+                  }}
                   className="text-sm font-medium text-muted-foreground hover:text-primary py-2"
                 >
                   {link.label}
