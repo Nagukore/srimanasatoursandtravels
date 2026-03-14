@@ -32,7 +32,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-xl border-b border-border">
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
-        <a href="#home" className="flex items-center">
+        <a href="#home" className="flex items-center gap-3">
+          <img src="/favicon.jpg" alt="Srimanasa logo" className="h-10 w-10 rounded-full object-cover border border-primary-foreground/10 shadow-sm" />
           <div className="leading-tight">
             <span className="text-lg font-bold font-[var(--font-display)] text-primary">Srimanasa</span>
             <span className="block text-[10px] tracking-[0.2em] uppercase text-muted-foreground">Tours & Travels</span>

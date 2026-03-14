@@ -8,6 +8,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
+              <img src="/favicon.jpg" alt="Srimanasa logo" className="h-8 w-8 rounded-full" />
               <div>
                 <span className="text-lg font-bold">Srimanasa</span>
                 <span className="block text-[10px] tracking-[0.2em] uppercase text-primary-foreground/50">Tours & Travels</span>
