@@ -13,7 +13,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-muted/50">
+    <section id="contact" className="py-16 md:py-24 bg-muted/50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,15 +27,15 @@ const ContactSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-5 lg:gap-10">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 space-y-6"
+            className="lg:col-span-2 space-y-4 md:space-y-6"
           >
-            <div className="bg-hero-gradient rounded-2xl p-8 text-primary-foreground">
+            <div className="bg-hero-gradient rounded-2xl p-6 md:p-8 text-primary-foreground">
               <h3 className="text-xl font-bold mb-6">Reach Us Anytime</h3>
               <div className="space-y-5">
                 {[
@@ -43,7 +43,7 @@ const ContactSection = () => {
                   { icon: Mail, text: "srimanasatoursandtravels@gmail.com", sub: "Email support" },
                   { icon: MapPin, text: "Bengaluru, Karnataka", sub: "Head Office" },
                 ].map((item) => (
-                  <div key={item.text} className="flex items-start gap-4">
+                  <div key={item.text} className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0">
                       <item.icon className="h-5 w-5 text-accent" />
                     </div>
@@ -63,9 +63,9 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             onSubmit={handleSubmit}
-            className="lg:col-span-3 bg-card rounded-2xl p-8 shadow-card space-y-5"
+            className="lg:col-span-3 bg-card rounded-2xl p-6 md:p-8 shadow-card space-y-5"
           >
-            <div className="grid sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <input
                 required
                 placeholder="Your Name"
